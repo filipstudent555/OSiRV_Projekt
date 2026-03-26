@@ -17,10 +17,11 @@ def quantization(image_np, k):
     quantized_pixels = centers[labels]
     quantized_image = quantized_pixels.reshape((h, w, 3))
 
-    return quantized_image, centers
+    inertia = kmeans.inertia_
+
+    return quantized_image, centers, inertia
 
 
 def print_palette(centers):
-    print("\nDetected colors (RGB cluster centers):")
     for i, color in enumerate(centers, start=1):
         print(f"Color {i}: {tuple(color)}")
